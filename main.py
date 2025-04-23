@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
 import os
-from klaviyo import pull_all_flow_data  # Make sure this file is in your project
+from klaviyo import pull_all_flow_data
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Replace with a secure key in production
+app.secret_key = 'supersecretkey'
 
 USERS_FILE = 'users.json'
 
@@ -70,7 +70,8 @@ def dashboard():
         if not api_key:
             return "No API key found for user", 400
 
-        pull_all_flow_data(api_key)  # ✅ FIXED: now includes the API key
+        print("🔍 DASHBOARD ROUTE RUNNING: api_key =", api_key)  # ✅ DEBUG print
+        pull_all_flow_data(api_key)  # ✅ Correct function call
 
     return render_template('dashboard.html')
 
