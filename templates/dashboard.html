@@ -1,20 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head><title>Dashboard</title></head>
 <body>
-  <h2>Welcome, {{ user }}</h2>
-
-  {% if csv_ready %}
-    <p><strong>✅ Your CSV is ready.</strong></p>
-    <a href="{{ url_for('download_csv') }}">⬇️ Download CSV</a>
-  {% else %}
-    <form method="POST" action="{{ url_for('generate_csv') }}">
-      <label for="api_key">Paste your Klaviyo Private API Key:</label><br>
-      <input type="text" name="api_key" required style="width: 300px;"><br><br>
-      <button type="submit">Generate CSV</button>
-    </form>
-  {% endif %}
-
-  <br><a href="{{ url_for('logout') }}">Log out</a>
+  <h2>Welcome, {{ user }}!</h2>
+  <p>This is your dashboard.</p>
 </body>
 </html>
