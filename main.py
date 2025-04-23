@@ -70,8 +70,8 @@ def dashboard():
         if not api_key:
             return "No API key found for user", 400
 
-        print("🔍 DASHBOARD ROUTE RUNNING: api_key =", api_key)  # ✅ DEBUG print
-        pull_all_flow_data(api_key)  # ✅ Correct function call
+        print("🔍 DASHBOARD ROUTE RUNNING: api_key =", api_key)  # Debug log
+        pull_all_flow_data(api_key)
 
     return render_template('dashboard.html')
 
@@ -80,5 +80,7 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('login'))
 
+# ✅ THIS BLOCK IS CRITICAL FOR RENDER
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
